@@ -19,6 +19,8 @@
   const ALL_ITEMS = SERVICES.concat(COURSES);
   const TOTAL_SLOTS = SLOT_CONFIG.END_HOUR - SLOT_CONFIG.START_HOUR + 1;
 
+  const CLOSED = SITE_CONFIG.BOOKING_ENABLED === false;     // запись временно закрыта (см. config.js)
+  const submitLabel = () => I18n.t(CLOSED ? 'notice.btn' : 'form.submit');
   const state = { itemId: null, date: null, time: null, busy: false };
   const refs = { cards: [], chips: [], days: [], months: [] };
   const $ = (id) => document.getElementById(id);
@@ -326,7 +328,7 @@
     });
     showError('');
     renderSlots();
-    if (!state.busy) $('submitBtn').textContent = t('form.submit');
+    if (!state.busy) $('submitBtn').textContent = submitLabel();
     $('sbBtn').textContent = t('sum.cta');
   }
 
@@ -422,7 +424,7 @@
 
   async function onSubmit(e) {
     e.preventDefault();
-    if (state.busy) return;
+    if (CLOSED || state.busy) return;
     if ($('fWebsite').value) return;                                   // honeypot: бот заполнил скрытое поле
     const f = { name: $('fName').value.trim(), contact: $('fContact').value.trim(), comment: $('fComment').value.trim() };
     if (!state.itemId) return showError(t('err.service'));
@@ -452,7 +454,7 @@
     } catch (err) {
       showError(err.complete ? err.message : t('err.send') + err.message + t('err.retry'));
     } finally {
-      state.busy = false; btn.disabled = false; btn.textContent = t('form.submit');
+      state.busy = false; btn.disabled = false; btn.textContent = submitLabel();
     }
   }
 
@@ -517,9 +519,19 @@
     $('modal').addEventListener('click', function (e) { if (e.target.id === 'modal') closeModal(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !$('modal').hidden) closeModal(); trapFocus(e); });
 
+    // Запись временно закрыта: показываем плашку и блокируем отправку формы
+    if (CLOSED) {
+      $('booking').classList.add('is-closed');
+      $('bookingNotice').hidden = false;
+      $('submitBtn').disabled = true;
+      document.querySelector('.t-note').setAttribute('data-i18n', 'tk.note.closed');
+      $('bookingForm').querySelectorAll('input, textarea').forEach(function (i) { i.disabled = true; });
+    }
+
     $('mapsBtn').href = TELEGRAM_CONFIG.MAPS_LINK;
     // Instagram: мастер и студия
-    [['igMaster', SOCIAL_CONFIG.INSTAGRAM_MASTER], ['igMasterFoot', SOCIAL_CONFIG.INSTAGRAM_MASTER],
+    [['igNoticeMaster', SOCIAL_CONFIG.INSTAGRAM_MASTER], ['igNoticeSalon', SOCIAL_CONFIG.INSTAGRAM_SALON],
+     ['igMaster', SOCIAL_CONFIG.INSTAGRAM_MASTER], ['igMasterFoot', SOCIAL_CONFIG.INSTAGRAM_MASTER],
      ['igSalon', SOCIAL_CONFIG.INSTAGRAM_SALON], ['igSalonFoot', SOCIAL_CONFIG.INSTAGRAM_SALON]].forEach(function (p) { $(p[0]).href = p[1]; });
     $('year').textContent = new Date().getFullYear();
     $('sbBtn').addEventListener('click', function () { $('bookingForm').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
