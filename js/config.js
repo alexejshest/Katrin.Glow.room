@@ -35,7 +35,7 @@ const SOCIAL_CONFIG = {
 
 // Название студии и валюта (цены в лари, пишем «GEL»)
 const SITE_CONFIG = {
-  BRAND: 'Beauty Studio',
+  BRAND: 'Katrin Glow Room',
   CURRENCY: 'GEL'
 };
 

@@ -486,8 +486,8 @@
     const fmt = function (ms) { return new Date(ms).toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, ''); };
     const esc = function (s) { return String(s).replace(/[\\;,]/g, '\\$&').replace(/\n/g, '\\n'); };
     const ics = [
-      'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Beauty Studio//Booking//EN', 'CALSCALE:GREGORIAN', 'BEGIN:VEVENT',
-      'UID:' + start + '-' + b.item.id + '@beauty-studio',
+      'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Katrin Glow Room//Booking//EN', 'CALSCALE:GREGORIAN', 'BEGIN:VEVENT',
+      'UID:' + start + '-' + b.item.id + '@katrin-glow-room',
       'DTSTAMP:' + fmt(Date.now()), 'DTSTART:' + fmt(start), 'DTEND:' + fmt(end),
       'SUMMARY:' + esc(SITE_CONFIG.BRAND + ' — ' + iname(b.item)),
       'LOCATION:' + esc(I18n.pick(TELEGRAM_CONFIG.SALON_ADDRESS)),
@@ -497,7 +497,7 @@
     ].join('\r\n');
     const a = document.createElement('a');
     a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }));
-    a.download = 'beauty-studio-booking.ics';
+    a.download = 'katrin-glow-room-booking.ics';
     document.body.appendChild(a); a.click(); a.remove();
     setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
   }

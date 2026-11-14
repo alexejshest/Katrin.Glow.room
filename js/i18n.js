@@ -8,7 +8,7 @@
    ============================================================ */
 const I18N = {
   ru: {
-    'meta.title': 'Beauty Studio — визажист в Батуми',
+    'meta.title': 'Katrin Glow Room — визажист в Батуми',
     'meta.desc': 'Безупречный образ для вашего особенного дня. Свадебный и вечерний макияж в Батуми, онлайн-запись.',
 
     'nav.services': 'Услуги', 'nav.portfolio': 'Работы', 'nav.course': 'Обучение', 'nav.booking': 'Запись', 'nav.contacts': 'Контакты',
@@ -86,7 +86,7 @@ const I18N = {
   },
 
   en: {
-    'meta.title': 'Beauty Studio — makeup artist in Batumi',
+    'meta.title': 'Katrin Glow Room — makeup artist in Batumi',
     'meta.desc': 'A flawless look for your special day. Bridal and evening makeup in Batumi, online booking.',
 
     'nav.services': 'Services', 'nav.portfolio': 'Portfolio', 'nav.course': 'Course', 'nav.booking': 'Booking', 'nav.contacts': 'Contact',
