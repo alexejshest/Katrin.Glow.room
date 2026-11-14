@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Beauty Studio — визажист в Батуми</title>
+  <meta name="description" content="Безупречный образ для вашего особенного дня. Свадебный и вечерний макияж в Батуми, онлайн-запись.">
+  <meta name="theme-color" content="#15130f">
+  <!-- Open Graph (для превью в мессенджерах). Для боевого сайта замените на полный URL. -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Beauty Studio — визажист в Батуми">
+  <meta property="og:description" content="Свадебный и вечерний макияж, образ в 4 руки, онлайн-запись. Batumi · Georgia.">
+  <meta property="og:image" content="img/hero-1400.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="img/hero-800.jpg" imagesrcset="img/hero-800.jpg 800w, img/hero-1400.jpg 1400w" imagesizes="(max-width: 960px) 90vw, 430px">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23d8c3a0'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <!-- Структурированные данные для поисковиков -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BeautySalon",
+    "name": "Beauty Studio",
+    "description": "Bridal and evening makeup, 4-hands makeup & hair look, makeup lessons in Batumi.",
+    "address": { "@type": "PostalAddress", "streetAddress": "26 May St. 52", "addressLocality": "Batumi", "addressCountry": "GE" },
+    "geo": { "@type": "GeoCoordinates", "latitude": 41.6450333, "longitude": 41.6337767 },
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.6450333,41.6337767",
+    "priceRange": "200–500 GEL",
+    "availableLanguage": ["ru", "en"],
+    "sameAs": ["https://www.instagram.com/ketrin.glow.room/", "https://www.instagram.com/ketrin_toftul_makeup/"],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Services",
+      "itemListElement": [
+        { "@type": "Offer", "price": "250", "priceCurrency": "GEL", "itemOffered": { "@type": "Service", "name": "Bridal Makeup" } },
+        { "@type": "Offer", "price": "200", "priceCurrency": "GEL", "itemOffered": { "@type": "Service", "name": "Evening Makeup" } },
+        { "@type": "Offer", "price": "500", "priceCurrency": "GEL", "itemOffered": { "@type": "Service", "name": "4-Hands Full Look: Makeup & Hair" } },
+        { "@type": "Offer", "price": "250", "priceCurrency": "GEL", "itemOffered": { "@type": "Service", "name": "Makeup for Yourself (course)" } }
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#top" data-i18n="nav.skip">К содержанию</a>
+
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-inner"><span class="loader-logo">Beauty<em>Studio</em></span><i class="loader-line"></i></div>
+    <b class="loader-num" id="loaderNum">0</b>
+  </div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+
+  <!-- Фон: падающие кисти и капли туши (js/falling.js) -->
+  <div class="ambient" aria-hidden="true"><canvas id="fall"></canvas></div>
+
+  <header class="nav" id="nav">
+    <a href="#top" class="logo">Beauty<em>Studio</em></a>
+    <nav class="nav-links" id="navLinks" data-i18n-aria="nav.menu" aria-label="Menu">
+      <a href="#services" data-i18n="nav.services">Услуги</a>
+      <a href="#portfolio" data-i18n="nav.portfolio">Работы</a>
+      <a href="#course" data-i18n="nav.course">Обучение</a>
+      <a href="#booking" data-i18n="nav.booking">Запись</a>
+      <a href="#contacts" data-i18n="nav.contacts">Контакты</a>
+    </nav>
+    <div class="nav-tools">
+      <div class="lang" role="group" data-i18n-aria="nav.lang" aria-label="Language">
+        <button type="button" data-lang="ru" aria-pressed="true">RU</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button type="button" class="sound-btn" id="soundBtn" data-i18n-aria="nav.sound" data-i18n-title="nav.sound" aria-label="Sound" aria-pressed="true">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5H4z"/>
+          <path class="waves" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/>
+          <path class="slash" d="M4 4l16 16"/>
+        </svg>
+      </button>
+      <a href="#booking" class="btn btn-small nav-cta" data-magnet data-i18n="nav.cta">Записаться</a>
+    </div>
+    <button class="burger" id="burger" data-i18n-aria="nav.menu" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+
+  <main id="top" tabindex="-1">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow load" style="--i:0" data-i18n="hero.eyebrow">Визажист · Батуми</p>
+          <h1 class="load" style="--i:1" data-i18n-html="hero.title">Безупречный образ для вашего <em>особенного</em> дня</h1>
+          <p class="hero-alt load" style="--i:2" lang="en" data-lang-alt data-i18n="hero.alt">Flawless look for your special day</p>
+          <div class="hero-actions load" style="--i:3">
+            <a href="#booking" class="btn" data-magnet data-i18n="hero.cta">Записаться онлайн</a>
+            <a href="#services" class="btn btn-ghost" data-magnet data-i18n="hero.cta2">Услуги и цены</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-photo" data-speed="-0.03">
+            <img src="img/hero-800.jpg" srcset="img/hero-800.jpg 800w, img/hero-1400.jpg 1400w, img/hero.jpg 2000w" sizes="(max-width: 960px) 90vw, 430px" width="800" height="1106" alt="" data-i18n-alt="alt.hero" fetchpriority="high" decoding="async">
+          </div>
+        </div>
+      </div>
+      <div class="scroll-hint" aria-hidden="true"><i></i></div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section" id="services">
+      <div class="container">
+        <p class="eyebrow reveal" data-i18n="srv.eyebrow">Услуги</p>
+        <h2 class="reveal" data-i18n-html="srv.title">Услуги и <em>стоимость</em></h2>
+        <div class="services-grid" id="servicesGrid"></div>
+        <p class="travel-plate reveal">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+          <span data-i18n="travel.text">Выезд за пределы Батуми — по индивидуальной договорённости</span>
+        </p>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <!-- PORTFOLIO -->
+    <section class="section" id="portfolio">
+      <div class="container">
+        <p class="eyebrow reveal" data-i18n="port.eyebrow">Portfolio</p>
+        <h2 class="reveal" data-i18n-html="port.title">Избранные <em>работы</em></h2>
+        <!-- Фото-заглушки из img/ — замените на работы мастера -->
+        <div class="photo-grid">
+          <figure class="tile t1 reveal"><img src="img/w1-800.jpg" srcset="img/w1-800.jpg 800w, img/w1-1400.jpg 1400w, img/w1.jpg 2000w" sizes="(max-width: 700px) 100vw, 50vw" width="800" height="1200" loading="lazy" decoding="async" alt="" data-i18n-alt="alt.w1"><figcaption data-i18n="port.t1">Образ невесты</figcaption></figure>
+          <figure class="tile t2 reveal"><img src="img/p2-800.jpg" srcset="img/p2-800.jpg 800w, img/p2-1400.jpg 1400w, img/p2.jpg 2000w" sizes="(max-width: 700px) 100vw, 50vw" width="800" height="1200" loading="lazy" decoding="async" alt="" data-i18n-alt="alt.p2"><figcaption data-i18n="port.t2">Нюд · свет</figcaption></figure>
+          <figure class="tile t3 reveal"><img src="img/w2-800.jpg" srcset="img/w2-800.jpg 800w, img/w2-1400.jpg 1400w, img/w2.jpg 2000w" sizes="(max-width: 700px) 100vw, 50vw" width="800" height="1200" loading="lazy" decoding="async" alt="" data-i18n-alt="alt.w2"><figcaption data-i18n="port.t3">Свадебное утро</figcaption></figure>
+          <figure class="tile t4 reveal"><img src="img/p5-800.jpg" srcset="img/p5-800.jpg 800w, img/p5-1400.jpg 1400w, img/p5.jpg 2000w" sizes="(max-width: 700px) 100vw, 50vw" width="800" height="1200" loading="lazy" decoding="async" alt="" data-i18n-alt="alt.p5"><figcaption data-i18n="port.t4">Вечернее золото</figcaption></figure>
+          <figure class="tile t5 reveal"><img src="img/w3-800.jpg" srcset="img/w3-800.jpg 800w, img/w3-1400.jpg 1400w, img/w3.jpg 2000w" sizes="(max-width: 700px) 100vw, 50vw" width="800" height="1200" loading="lazy" decoding="async" alt="" data-i18n-alt="alt.w3"><figcaption data-i18n="port.t5">Тёплый нюд</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- REEL: видео -->
+    <section class="section reel-sec">
+      <div class="container">
+        <div class="reel reveal" id="reel">
+          <video id="reelVideo" muted loop playsinline preload="none" poster="img/p2-800.jpg" aria-hidden="true">
+            <source src="video/makeup.mp4" type="video/mp4">
+          </video>
+          <div class="reel-shade"></div>
+          <div class="reel-text">
+            <p class="eyebrow" data-i18n="reel.eyebrow">Процесс</p>
+            <p class="reel-big" data-i18n="reel.title">Смотрите, как рождается образ</p>
+            <small data-i18n="reel.note">видео-заглушка · замените на свой ролик</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COURSE: один курс, одна цена -->
+    <section class="section" id="course">
+      <div class="container">
+        <div class="course-card reveal">
+          <div class="course-photo"><img src="img/p2-800.jpg" srcset="img/p2-800.jpg 800w, img/p2-1400.jpg 1400w" sizes="(max-width: 960px) 100vw, 45vw" width="800" height="1200" loading="lazy" decoding="async" alt="" data-i18n-alt="alt.p2"></div>
+          <div class="course-body">
+            <p class="eyebrow" data-i18n="course.eyebrow">Обучение</p>
+            <h2 data-i18n-html="course.title">Макияж <em>для себя</em></h2>
+            <p class="lead" data-i18n="course.lead">Научитесь подбирать косметику под свой тип внешности, делать дневной макияж за 15 минут и превращать его в вечерний.</p>
+            <div class="course-price"><b data-price="course">250 GEL</b><span><span data-i18n="course.note">индивидуальное занятие</span> · <span data-dur="course">2 ч</span></span></div>
+            <button class="btn" data-magnet data-pick="course" data-i18n="course.cta">Записаться на обучение</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <!-- BOOKING -->
+    <section class="section" id="booking">
+      <div class="container">
+        <p class="eyebrow reveal" data-i18n="book.eyebrow">Онлайн-запись</p>
+        <h2 class="reveal" data-i18n-html="book.title">Выберите <em>время</em></h2>
+
+        <div class="booking reveal">
+          <div class="book-main">
+            <div class="step">
+              <h3><i>1</i> <span data-i18n="book.s1">Услуга</span></h3>
+              <div class="chips" id="serviceChips" role="radiogroup" data-i18n-aria="book.s1" aria-label="Service"></div>
+              <p class="selected-info" id="selectedInfo" aria-live="polite"></p>
+            </div>
+
+            <div class="step">
+              <h3><i>2</i> <span data-i18n="book.s2">Дата</span> <small id="dateLabel"></small></h3>
+              <div class="cal-tools">
+                <div class="months" id="monthBar"></div>
+                <div class="quick">
+                  <button type="button" class="qbtn" id="qNearest" data-i18n="book.nearest">Ближайшее время</button>
+                  <button type="button" class="qbtn" id="qToday" data-i18n="book.today">Сегодня</button>
+                  <button type="button" class="qbtn" id="qTomorrow" data-i18n="book.tomorrow">Завтра</button>
+                </div>
+              </div>
+              <div class="cal-wrap">
+                <button class="cal-arrow" id="calPrev" data-i18n-aria="book.prev" aria-label="Previous">‹</button>
+                <div class="calendar" id="calendar" role="listbox" data-i18n-aria="book.s2" aria-label="Date"></div>
+                <button class="cal-arrow" id="calNext" data-i18n-aria="book.next" aria-label="Next">›</button>
+              </div>
+              <p class="legend"><i class="lg free"></i><span data-i18n="book.legend.free">много мест</span> <i class="lg mid"></i><span data-i18n="book.legend.mid">мало</span> <i class="lg none"></i><span data-i18n="book.legend.none">почти занято</span></p>
+            </div>
+
+            <div class="step">
+              <h3><i>3</i> <span data-i18n="book.s3">Время</span> <small data-i18n="book.tz">Время по Батуми (GMT+4)</small></h3>
+              <div class="slots" id="slots"></div>
+            </div>
+
+            <form class="step form" id="bookingForm" novalidate>
+              <h3><i>4</i> <span data-i18n="book.s4">Ваши данные</span></h3>
+              <label><span data-i18n="form.name">Имя</span>
+                <input type="text" id="fName" name="name" autocomplete="name" data-i18n-ph="form.name.ph" placeholder="Как к вам обращаться" required>
+              </label>
+              <label><span data-i18n="form.contact">Телефон или ник в Telegram</span>
+                <input type="text" id="fContact" name="contact" autocomplete="tel" data-i18n-ph="form.contact.ph" placeholder="+995 … или @username" required>
+              </label>
+              <label><span data-i18n="form.comment">Комментарий</span>
+                <textarea id="fComment" name="comment" rows="3" data-i18n-ph="form.comment.ph" placeholder="Пожелания, дата мероприятия, референсы (необязательно)"></textarea>
+              </label>
+              <!-- Ловушка для ботов: человек это поле не видит и не заполняет -->
+              <div class="hp" aria-hidden="true"><label>Website <input type="text" id="fWebsite" name="website" tabindex="-1" autocomplete="off"></label></div>
+              <p class="form-error" id="formError" role="alert"></p>
+              <button type="submit" class="btn btn-wide" id="submitBtn">Подтвердить запись</button>
+            </form>
+          </div>
+
+          <aside class="ticket">
+            <p class="t-title" data-i18n="tk.title">Ваша запись</p>
+            <dl>
+              <div><dt data-i18n="tk.service">Услуга</dt><dd id="sumService">—</dd></div>
+              <div><dt data-i18n="tk.date">Дата</dt><dd id="sumDate">—</dd></div>
+              <div><dt data-i18n="tk.time">Время</dt><dd id="sumTime">—</dd></div>
+              <div><dt data-i18n="tk.dur">Длительность</dt><dd id="sumDur">—</dd></div>
+            </dl>
+            <div class="t-cut" aria-hidden="true"></div>
+            <div class="t-total"><span data-i18n="tk.total">Итого</span><b id="sumPrice">—</b></div>
+            <p class="t-note" data-i18n="tk.note">Заявка уйдёт мастеру в Telegram. Время сразу блокируется для других клиентов.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTS -->
+    <section class="section" id="contacts">
+      <div class="container">
+        <div class="contacts reveal">
+          <div>
+            <p class="eyebrow" data-i18n="contacts.eyebrow">Контакты</p>
+            <h2 data-i18n-html="contacts.title">Ждём вас <em>в Батуми</em></h2>
+            <p class="lead" id="salonAddress"></p>
+            <p class="muted" data-i18n="contacts.hours">Ежедневно, по записи · 04:00–21:00</p>
+            <p class="socials-title" data-i18n="social.title">Мы в Instagram</p>
+            <div class="socials">
+              <a class="social" id="igMaster" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg><span><small data-i18n="social.master">Instagram мастера</small>@ketrin_toftul_makeup</span></a>
+              <a class="social" id="igSalon" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg><span><small data-i18n="social.salon">Instagram студии</small>@ketrin.glow.room</span></a>
+            </div>
+            <p class="travel-plate inline">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+              <span data-i18n="travel.text">Выезд за пределы Батуми — по индивидуальной договорённости</span>
+            </p>
+          </div>
+          <a class="btn" id="mapsBtn" target="_blank" rel="noopener" data-magnet data-i18n="contacts.map">Открыть в Google Maps ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container"><span>© <span id="year"></span> Beauty Studio</span><span class="foot-links"><a class="foot-ig" id="igMasterFoot" target="_blank" rel="noopener noreferrer">@ketrin_toftul_makeup</a><a class="foot-ig" id="igSalonFoot" target="_blank" rel="noopener noreferrer">@ketrin.glow.room</a></span><a href="#top" data-i18n="footer.top">Наверх ↑</a></div>
+  </footer>
+
+  <!-- Мобильная полоска итога записи -->
+  <div class="sumbar" id="sumbar">
+    <div class="sb-info"><b id="sbName"></b><span id="sbWhen"></span></div>
+    <strong id="sbPrice"></strong>
+    <button type="button" class="btn btn-small" id="sbBtn">Продолжить</button>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal" id="modal" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-icon" aria-hidden="true">✓</div>
+      <h3 id="modalTitle" data-i18n="modal.title">Вы записаны!</h3>
+      <p id="modalText"></p>
+      <p class="demo-note" id="demoNote" data-i18n="modal.demo" hidden>Демо-режим: заявка не отправлена в Telegram. Укажите токен в js/config.js.</p>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="icsBtn" type="button" data-i18n="modal.ics">Добавить в календарь</button>
+        <button class="btn" id="modalClose" type="button" data-i18n="modal.ok">Отлично</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/sound.js"></script>
+  <script src="js/booking.js"></script>
+  <script src="js/fx.js"></script>
+  <script src="js/falling.js"></script>
+</body>
+</html>

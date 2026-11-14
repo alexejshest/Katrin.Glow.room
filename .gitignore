@@ -1,0 +1,4 @@
+.DS_Store
+backup-light/
+*.log
+node_modules/
